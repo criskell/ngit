@@ -1,0 +1,1 @@
+exports.runCli = require("./cli");
