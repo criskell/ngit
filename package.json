@@ -1,5 +1,5 @@
 {
-  "name": "ngit",
+  "name": "@criskell/ngit",
   "version": "1.0.0",
   "bin": "./bin/ngit.js",
   "scripts": {

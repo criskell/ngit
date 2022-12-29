@@ -11,26 +11,17 @@ Comandos suportados:
 - remote add
 - push
 
-## Instalação
-É preciso ter o Node com npm instalado e o Git (para fazer o clone do repositório).
-
-Execute os comandos:
-
-```bash
-$ git clone https://github.com/criskell/ngit.git
-$ cd ngit
-$ npm i
-```
-
 ## Utilização
+Neste exemplo estamos utilizando npx, npm e Node.
+
 ```bash
 $ mkdir repositorio-teste
 $ cd repositorio-teste
-$ ngit init
-$ ngit add .
-$ ngit config user.name "Nome do seu usuário"
-$ ngit config user.email "E-mail do seu usuário"
-$ ngit commit -m "Mensagem do commit"
-$ ngit remote add origin https://example.com/url-do-repositorio.git
-$ ngit push origin main
+$ npx @criskell/ngit init
+$ npx @criskell/ngit add .
+$ npx @criskell/ngit config user.name "Nome do seu usuário"
+$ npx @criskell/ngit config user.email "E-mail do seu usuário"
+$ npx @criskell/ngit commit -m "Mensagem do commit"
+$ npx @criskell/ngit remote add origin https://example.com/url-do-repositorio.git
+$ npx @criskell/ngit push origin main
 ```
