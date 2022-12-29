@@ -28,7 +28,7 @@ module.exports = {
 
     const auth = {};
 
-    console.log("Digite suas credenciais para o repositório localizado em: " + remoteUrl);
+    console.log("Enviando objetos para o repositório localizado em: " + remoteUrl);
 
     const username = process.env.GIT_USERNAME || await prompt("Digite o e-mail/usuário: ");
     const password = process.env.GIT_PASSWORD || await prompt("Digite a senha: ", true);
