@@ -16,12 +16,21 @@ const writeAsLooseObject = async (gitDirectory, hash, wrapped) => {
   await fs.writeFile(path, compressed);
 };
 
-const readWrapped = async (gitDirectory, hash) => {
+const readAsLooseObject = async (gitDirectory, hash) => {
   const parent = nodePath.join(gitDirectory, "objects", hash.slice(0, 2));
   const path = nodePath.join(parent, hash.slice(2));
 
   const compressed = await fs.readFile(path);
-  const wrapped = await decompress(compressed);
+
+  return compressed;
+};
+
+const getWrapped = (compressed) => {
+  return decompress(compressed);
+};
+
+const readWrapped = async (gitDirectory, hash) => {
+  const wrapped = await getWrapped(await readAsLooseObject(gitDirectory, hash));
 
   return wrapped;
 };
@@ -73,4 +82,7 @@ module.exports = {
   saveBlobFromFile,
   readRawObject,
   readObject,
+  readWrapped,
+  readAsLooseObject,
+  getWrapped,
 };

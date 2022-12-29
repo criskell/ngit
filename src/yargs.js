@@ -10,6 +10,7 @@ yargs
   .command(require("./commands/ls-tree"))
   .command(require("./commands/config"))
   .command(require("./commands/add-remote"))
+  .command(require("./commands/push"))
   .demandCommand(1)
   .help();
 

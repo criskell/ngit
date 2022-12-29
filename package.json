@@ -6,6 +6,8 @@
     "ngit": "./bin/ngit.js"
   },
   "dependencies": {
+    "axios": "^1.2.1",
+    "got": "^12.5.3",
     "ini": "^3.0.1",
     "yargs": "^17.6.2"
   }
