@@ -43,6 +43,9 @@ module.exports = {
 
     const objects = await findObjectsToPack(repo, remoteBranchHash, localBranchHash);
 
+    console.log(localBranchHash, "local");
+    process.exit();
+
     const pack = await createPack(objects);
 
     const receivePackRequest = Buffer.concat([
@@ -185,7 +188,7 @@ const findObjectsToPack = async (repo, currentCommit, newCommit) => {
       size: raw.data.length,
     });
 
-    for (const entry of parsedObject.data) {
+    for await (const entry of parsedObject.data) {
       await loadTreeEntry(entry);
     }
   };
@@ -207,7 +210,7 @@ const findObjectsToPack = async (repo, currentCommit, newCommit) => {
     await loadTree(parsedObject.data.treeId);
 
     if (commitId !== currentCommit) {
-      for (const parentId of parsedObject.data.parentIds) {
+      for await (const parentId of parsedObject.data.parentIds) {
         await loadCommit(parentId);
       }
     }

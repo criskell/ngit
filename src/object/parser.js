@@ -55,11 +55,20 @@ const parseTree = (data) => {
 
   let cursor = 0;
 
+  /**
+   * mode<space>path<nul><object-id>
+   */
   while (cursor < data.length) {
     const spaceIndex = data.indexOf(" ", cursor);
+
+    if (spaceIndex === -1) break;
+
     const modeString = data.subarray(cursor, spaceIndex).toString();
     const mode = parseInt(modeString, 8);
     const nullIndex = data.indexOf("\0", spaceIndex);
+
+    if (nullIndex === -1) break;
+
     const path = data.subarray(spaceIndex + 1, nullIndex).toString("ascii");
 
     cursor = nullIndex + 1 + 20;

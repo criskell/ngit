@@ -1,5 +1,5 @@
 # ngit
-Cliente Git em CLI criado com o propósito de fazer um push de si mesmo para o repositório do GitHub, do `init` ao `push`.
+Cliente Git em CLI criado com o propósito de fazer um push de si mesmo para o repositório do GitHub.
 
 Atualmente suporta apenas transporte HTTP(s) (smart), não suporta transporte SSH.
 
@@ -10,6 +10,11 @@ Comandos suportados:
 - commit
 - remote add
 - push
+
+## Ferramentas utilizadas
+- Node
+- axios
+- yargs
 
 ## Utilização
 Neste exemplo estamos utilizando npx, npm e Node.

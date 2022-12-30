@@ -5,11 +5,15 @@ const { unwrapObject, parseObject } = require("./object/parser");
 const { serializeObject, wrapObject } = require("./object/serializer");
 const { sha1 } = require("./hash");
 const { compress, decompress } = require("./compression");
+const { exists } = require("./filesystem");
 
 const writeAsLooseObject = async (gitDirectory, hash, wrapped) => {
   const parent = nodePath.join(gitDirectory, "objects", hash.slice(0, 2));
-  await fs.mkdir(parent, { recursive: true });
   const path = nodePath.join(parent, hash.slice(2));
+
+  if (await exists(path)) return;
+
+  await fs.mkdir(parent, { recursive: true });
 
   const compressed = await compress(wrapped);
 
