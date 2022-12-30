@@ -66,12 +66,12 @@ const parseFlags = (rawFlags) => {
   };
 };
 
-const parseEntries = (data, startAt) => {
+const parseEntries = (data, startAt, numberOfEntries) => {
   const entries = new Map();
 
   let cursor = startAt;
 
-  while (cursor + 62 < data.length) {
+  while (entries.size < numberOfEntries) {
     const ctimeInSeconds = data.readUInt32BE(cursor);
     const ctimeInNanoseconds = data.readUInt32BE(cursor + 4);
     const mtimeInSeconds = data.readUInt32BE(cursor + 8);
@@ -128,15 +128,13 @@ const parseEntries = (data, startAt) => {
 
 const parseIndex = (rawIndex) => {
   const header = parseHeader(rawIndex);
-  const { entries, cursor } = parseEntries(rawIndex, 12);
-  const rawExtensions = rawIndex.subarray(cursor, -20);
+  const { entries, cursor } = parseEntries(rawIndex, 12, header.numberOfEntries);
   const checksum = rawIndex.subarray(-20);
 
   return {
     version: header.version,
     header,
     entries,
-    rawExtensions,
     checksum,
   };
 };

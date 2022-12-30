@@ -23,6 +23,7 @@ Neste exemplo estamos utilizando npx, npm e Node.
 $ mkdir repositorio-teste
 $ cd repositorio-teste
 $ npx @criskell/ngit init
+$ echo "# repositorio-teste\neste é um repositório teste" > README.md
 $ npx @criskell/ngit add .
 $ npx @criskell/ngit config user.name "Nome do seu usuário"
 $ npx @criskell/ngit config user.email "E-mail do seu usuário"
