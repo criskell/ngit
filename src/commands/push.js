@@ -43,9 +43,6 @@ module.exports = {
 
     const objects = await findObjectsToPack(repo, remoteBranchHash, localBranchHash);
 
-    console.log(localBranchHash, "local");
-    process.exit();
-
     const pack = await createPack(objects);
 
     const receivePackRequest = Buffer.concat([
